@@ -71,7 +71,7 @@
                                     <td> <?= $value->kepuasan; ?></td>
                                     <td>
                                         <a href="<?= base_url('pst//restore/' . $value->id); ?>" class="btn btn-success"><span class="fa fa-recycle"></span> </a>
-                                        <form action="<?= base_url("groups/delete2/" . $value->id); ?>" method="post" class="d-inline" onsubmit=" return confirm('Yakin Hapus data secara permanen?')">
+                                        <form action="<?= base_url("pst/delete2/" . $value->id); ?>" method="post" class="d-inline" onsubmit=" return confirm('Yakin Hapus data secara permanen?')">
                                             <?= csrf_field(); ?>
                                             <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> </button>
                                         </form>
