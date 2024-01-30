@@ -29,12 +29,7 @@ class PST extends BaseController
     }
     public function index()
     {
-        $this->pendidikan->select('*');
-        $this->pekerjaan->select('*');
-        $this->pemanfaatan->select('*');
-        $this->layanan->select('*');
-        $this->jenis_kelamin->select('*');
-        $this->kepuasan->select('*');
+
         $data['pendidikan'] = $this->pendidikan->findAll();
         $data['pekerjaan'] = $this->pekerjaan->findAll();
         $data['pemanfaatan'] = $this->pemanfaatan->findAll();
@@ -77,6 +72,86 @@ class PST extends BaseController
         $data['pst'] = $this->pst->findAll();
 
         return view('pst/report', $data);
+    }
+
+    public function edit($id = null)
+    {
+        $pst = $this->pst->find($id);
+        //dd($contact);
+        if (is_object($pst)) { //jika id nya ada maka lanjut jika tidak akan error
+            $data['pst'] = $pst;
+            $data['pendidikan'] = $this->pendidikan->findAll();
+            $data['pekerjaan'] = $this->pekerjaan->findAll();
+            $data['pemanfaatan'] = $this->pemanfaatan->findAll();
+            $data['layanan'] = $this->layanan->findAll();
+            $data['jenis_kelamin'] = $this->jenis_kelamin->findAll();
+            $data['kepuasan'] = $this->kepuasan->findAll();
+            return view('pst/edit', $data);
+        } else {
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+        }
+    }
+
+    public function update($id = null)
+    {
+        $data = $this->request->getPost();
+        $save = $this->pst->update($id, $data);
+        if (!$save) {
+            return redirect()->back()->withInput()->with('errors', $this->pst->errors());
+        } else {
+            return redirect()->to('pst/report')->with('success', 'Data Berhasil Diupdate');
+        }
+    }
+
+    public function trash()
+    {
+        $data['pst'] = $this->pst->onlyDeleted()->findAll();
+        return view('pst/trash', $data);
+    }
+
+    public function restore($id = null)
+    {
+        $this->db  = \Config\Database::connect();
+        if ($id != null) {
+            $this->db->table('pst')
+                ->set('deleted_at', null, true)
+                ->where(['id' => $id])
+                ->update();
+            if ($this->db->affectedRows() > 0) {
+                return redirect()->to('pst/report')->with('success', 'Data Berhasil Direstore');
+            }
+        } else {
+            $this->db->table('pst')
+                ->set('deleted_at', null, true)
+                ->where('deleted_at is NOT NULL', null, false)
+                ->update();
+            if ($this->db->affectedRows() > 0) {
+                return redirect()->to('pst/report')->with('success', 'Semua Data Berhasil Direstore');
+            } else {
+                return redirect()->to('pst/report')->with('info', 'Tidak ada data yang Direstore');
+            }
+        }
+    }
+
+    public function delete($id)
+    {
+        $this->pst->delete($id);
+        return redirect()->back()->with('success', 'Data Berhasil Dihapus');
+    }
+
+    public function delete2($id = null)
+    {
+        if ($id != null) {
+            $this->pst->delete($id, true);
+            return redirect()->to('pst/trash')->with('success', 'Data Berhasil Dihapus Permanent');
+        } else {
+            $this->pst->purgeDeleted();
+            if ($this->pst->affectedRows() > 0) {
+                return redirect()->to('pst/trash')->with('success', 'Semua Data Berhasil Dihapus Permanent');
+            } else {
+                return redirect()->to('pst')->with('info', 'Tidak ada data yang didelete');
+            }
+        }
     }
 
     public function tahun($tahun)
@@ -149,6 +224,7 @@ class PST extends BaseController
 
         $data['jk'] = jenisKelamin($tahun, $twl);
         $data['kepuasan'] = kepuasan($tahun, $twl);
+        $tahun = $tahun;
 
         usort($data['dashboard'], 'compare_months');
 
@@ -160,6 +236,7 @@ class PST extends BaseController
             'month_labels' => $month_labels,
             'jk' => $data['jk'],
             'kepuasan' => $data['kepuasan'],
+            'tahun' => $tahun,
         ]);
     }
 }

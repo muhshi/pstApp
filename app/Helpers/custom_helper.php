@@ -3,13 +3,13 @@
 function countData($tahun)
 {
     $db      = \Config\Database::connect();
-    return $db->table('pst')->where('tahun', $tahun)->countAllResults();
+    return $db->table('pst')->where('tahun', $tahun)->where('deleted_at IS NULL')->countAllResults();
 }
 
 function kepuasanAvg($tahun)
 {
     $db      = \Config\Database::connect();
-    $response = $db->table('pst')->selectAvg('kepuasan')->where('tahun', $tahun)->get()->getResult();
+    $response = $db->table('pst')->selectAvg('kepuasan')->where('tahun', $tahun)->where('deleted_at IS NULL')->get()->getResult();
     $kepuasan = $response[0]->kepuasan;
     $kepuasan = number_format((float)$kepuasan, 1, '.', '');
     return $kepuasan;

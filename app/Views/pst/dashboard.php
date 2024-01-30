@@ -8,7 +8,7 @@
 
 <div class="app-title">
     <div>
-        <h1><i class="fa fa-book"></i> Laporan Hasil Kunjungan Tahun <?= date("Y"); ?></h1>
+        <h1><i class="fa fa-book"></i> Laporan Hasil Kunjungan Tahun <?= $tahun; ?></h1>
         <p>Laporan berupa grafik hasil kunjungan PST</p>
     </div>
     <ul class="app-breadcrumb breadcrumb">
@@ -21,7 +21,7 @@
     <div class="col-md-12">
         <div class="widget-small primary coloured-icon">
             <div style="padding: 10px;">
-                <h1> Laporan Hasil Kunjungan Tahun <?= date("Y"); ?></h1>
+                <h1> Laporan Hasil Kunjungan Tahun <?= $tahun; ?></h1>
             </div>
         </div>
     </div>
@@ -30,16 +30,16 @@
     <div class="col-md-6">
         <div class="widget-small primary coloured-icon"><i class="icon fa fa-users fa-3x"></i>
             <div class="info">
-                <h5>Pengunjung Tahun <?= date('Y'); ?></h5>
-                <p><b><?= countData(date('Y')); ?></b></p>
+                <h5>Pengunjung Tahun <?= $tahun; ?></h5>
+                <p><b><?= countData($tahun); ?></b></p>
             </div>
         </div>
     </div>
     <div class="col-md-6">
         <div class="widget-small info coloured-icon"><i class="icon fa fa-thumbs-o-up fa-3x"></i>
             <div class="info">
-                <h5>Kepuasan Tahun <?= date('Y'); ?></h5>
-                <p><b><?= kepuasanAvg(date('Y')); ?>/4</b></p>
+                <h5>Kepuasan Tahun <?= $tahun; ?></h5>
+                <p><b><?= kepuasanAvg($tahun); ?>/4</b></p>
             </div>
         </div>
     </div>
@@ -60,22 +60,22 @@
                                 echo 'btn-primary';
                             } else {
                                 echo 'btn-outline-primary';
-                            } ?>" href="/pst/dashboard/<?= date('Y'); ?>/1"><i class="fa fa-fw fa-lg fa-check-circle"></i>Triwulan I</a>&nbsp;&nbsp;&nbsp;
+                            } ?>" href="/pst/dashboard/<?= $tahun; ?>/1"><i class="fa fa-fw fa-lg fa-check-circle"></i>Triwulan I</a>&nbsp;&nbsp;&nbsp;
             <a class="btn <?php if (current_url(true)->getSegment(4) == "2") {
                                 echo 'btn-primary';
                             } else {
                                 echo 'btn-outline-primary';
-                            } ?>" href="/pst/dashboard/<?= date('Y'); ?>/2"><i class="fa fa-fw fa-lg fa-check-circle"></i>Triwulan II</a>&nbsp;&nbsp;&nbsp;
+                            } ?>" href="/pst/dashboard/<?= $tahun; ?>/2"><i class="fa fa-fw fa-lg fa-check-circle"></i>Triwulan II</a>&nbsp;&nbsp;&nbsp;
             <a class="btn <?php if (current_url(true)->getSegment(4) == "3") {
                                 echo 'btn-primary';
                             } else {
                                 echo 'btn-outline-primary';
-                            } ?>" href="/pst/dashboard/<?= date('Y'); ?>/3"><i class="fa fa-fw fa-lg fa-check-circle"></i>Triwulan III</a>&nbsp;&nbsp;&nbsp;
+                            } ?>" href="/pst/dashboard/<?= $tahun; ?>/3"><i class="fa fa-fw fa-lg fa-check-circle"></i>Triwulan III</a>&nbsp;&nbsp;&nbsp;
             <a class="btn <?php if (current_url(true)->getSegment(4) == "4") {
                                 echo 'btn-primary';
                             } else {
                                 echo 'btn-outline-primary';
-                            } ?>" href="/pst/dashboard/<?= date('Y'); ?>/4"><i class="fa fa-fw fa-lg fa-check-circle"></i>Triwulan IV</a>&nbsp;&nbsp;&nbsp;
+                            } ?>" href="/pst/dashboard/<?= $tahun; ?>/4"><i class="fa fa-fw fa-lg fa-check-circle"></i>Triwulan IV</a>&nbsp;&nbsp;&nbsp;
         </div>
     </div>
 </div>
