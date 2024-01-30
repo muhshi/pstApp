@@ -31,7 +31,7 @@
                     <?php endif; ?>
                     <div class="row" style="margin-bottom: 10px;">
 
-                        <div class="col-md-12" style="text-align: right;">
+                        <div class="col-md-12   " style="text-align: right;">
                             <a type="button" class="btn btn-success" href="<?= base_url('pst/restore'); ?>"><i class="fa fa-recycle"></i> Restore All</a>
                             <form action="<?= site_url("pst/delete2"); ?>" onsubmit="return confirm('Yakin mau di delete permanent?')" method="post" class="d-inline">
                                 <?= csrf_field(); ?>
