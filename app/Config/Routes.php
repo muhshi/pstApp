@@ -5,8 +5,9 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
-$routes->get('/', 'PST::index');
-$routes->get('/home', 'PST::index');
+$routes->get('/pst/home', 'PST::index');
+$routes->addRedirect('/home', '/pst/home');
+$routes->addRedirect('/', '/pst/home');
 
 //PST
 $routes->post('pst/create', 'PST::create');

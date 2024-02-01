@@ -48,7 +48,13 @@
     <div class="col-md-12">
         <div class="widget-small primary coloured-icon">
             <div style="padding: 10px;">
-                <h1> Laporan Hasil Kunjungan Triwulan <?= current_url(true)->getSegment(4); ?></h1>
+                <h1>
+                    Laporan Hasil Kunjungan Triwulan <?= current_url(true)->getSegment(4); ?>
+                    Tahun
+                    <a type="button" class="btn <?= (current_url(true)->getSegment(3) == "2023") ?  'btn-primary' : 'btn-outline-light'; ?>" href="<?= base_url('pst/dashboard/2023/1'); ?>"> 2023</a>
+                    <a type="button" class="btn <?= (current_url(true)->getSegment(3) == "2024") ?  'btn-primary' : 'btn-outline-light'; ?>" href="<?= base_url('pst/dashboard/2024/1'); ?>"> 2024</a>
+                    <a type="button" class="btn <?= (current_url(true)->getSegment(3) == "2025") ?  'btn-primary' : 'btn-outline-light'; ?>" href="<?= base_url('pst/dashboard/2025/1'); ?>"> 2025</a>
+                </h1>
             </div>
         </div>
     </div>
@@ -56,26 +62,10 @@
 <div class="tile-footer" style="margin-bottom: 10px;">
     <div class="widget-small primary coloured-icon">
         <div style="padding: 10px;">
-            <a class="btn <?php if (current_url(true)->getSegment(4) == "1") {
-                                echo 'btn-primary';
-                            } else {
-                                echo 'btn-outline-primary';
-                            } ?>" href="/pst/dashboard/<?= $tahun; ?>/1"><i class="fa fa-fw fa-lg fa-check-circle"></i>Triwulan I</a>&nbsp;&nbsp;&nbsp;
-            <a class="btn <?php if (current_url(true)->getSegment(4) == "2") {
-                                echo 'btn-primary';
-                            } else {
-                                echo 'btn-outline-primary';
-                            } ?>" href="/pst/dashboard/<?= $tahun; ?>/2"><i class="fa fa-fw fa-lg fa-check-circle"></i>Triwulan II</a>&nbsp;&nbsp;&nbsp;
-            <a class="btn <?php if (current_url(true)->getSegment(4) == "3") {
-                                echo 'btn-primary';
-                            } else {
-                                echo 'btn-outline-primary';
-                            } ?>" href="/pst/dashboard/<?= $tahun; ?>/3"><i class="fa fa-fw fa-lg fa-check-circle"></i>Triwulan III</a>&nbsp;&nbsp;&nbsp;
-            <a class="btn <?php if (current_url(true)->getSegment(4) == "4") {
-                                echo 'btn-primary';
-                            } else {
-                                echo 'btn-outline-primary';
-                            } ?>" href="/pst/dashboard/<?= $tahun; ?>/4"><i class="fa fa-fw fa-lg fa-check-circle"></i>Triwulan IV</a>&nbsp;&nbsp;&nbsp;
+            <a class="btn <?= (current_url(true)->getSegment(4) == "1") ? 'btn-primary' : 'btn-outline-primary' ?>" href="/pst/dashboard/<?= $tahun; ?>/1"><i class="fa fa-fw fa-lg fa-check-circle"></i>Triwulan I</a>&nbsp;&nbsp;&nbsp;
+            <a class="btn <?= (current_url(true)->getSegment(4) == "2") ? 'btn-primary' : 'btn-outline-primary' ?>" href="/pst/dashboard/<?= $tahun; ?>/2"><i class="fa fa-fw fa-lg fa-check-circle"></i>Triwulan II</a>&nbsp;&nbsp;&nbsp;
+            <a class="btn <?= (current_url(true)->getSegment(4) == "3") ? 'btn-primary' : 'btn-outline-primary' ?>" href="/pst/dashboard/<?= $tahun; ?>/3"><i class="fa fa-fw fa-lg fa-check-circle"></i>Triwulan III</a>&nbsp;&nbsp;&nbsp;
+            <a class="btn <?= (current_url(true)->getSegment(4) == "4") ? 'btn-primary' : 'btn-outline-primary' ?>" href="/pst/dashboard/<?= $tahun; ?>/4"><i class="fa fa-fw fa-lg fa-check-circle"></i>Triwulan IV</a>&nbsp;&nbsp;&nbsp;
         </div>
     </div>
 </div>

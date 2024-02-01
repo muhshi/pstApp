@@ -8,9 +8,11 @@
 
 `git clone https://github.com/muhshi/pstApp.git` then `composer update` it will fill the file
 then
-`cp .env.example .env
+`cp .env.example .env`
 create database
 match the name of the database with `.env`file`php spark migrate` to activate the database
+last is install chart.js
+`npm install chart.js`
 
 When updating, check the release notes to see if there are any changes you might need to apply
 to your `app` folder. The affected files can be copied or merged from
