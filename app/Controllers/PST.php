@@ -99,7 +99,7 @@ class PST extends BaseController
         if (!$save) {
             return redirect()->back()->withInput()->with('errors', $this->pst->errors());
         } else {
-            return redirect()->to('pst/report')->with('success', 'Data Berhasil Diupdate');
+            return redirect()->to('/report')->with('success', 'Data Berhasil Diupdate');
         }
     }
 
@@ -118,7 +118,7 @@ class PST extends BaseController
                 ->where(['id' => $id])
                 ->update();
             if ($this->db->affectedRows() > 0) {
-                return redirect()->to('pst/report')->with('success', 'Data Berhasil Direstore');
+                return redirect()->to('/report')->with('success', 'Data Berhasil Direstore');
             }
         } else {
             $this->db->table('pst')
@@ -126,9 +126,9 @@ class PST extends BaseController
                 ->where('deleted_at is NOT NULL', null, false)
                 ->update();
             if ($this->db->affectedRows() > 0) {
-                return redirect()->to('pst/report')->with('success', 'Semua Data Berhasil Direstore');
+                return redirect()->to('/report')->with('success', 'Semua Data Berhasil Direstore');
             } else {
-                return redirect()->to('pst/report')->with('info', 'Tidak ada data yang Direstore');
+                return redirect()->to('/report')->with('info', 'Tidak ada data yang Direstore');
             }
         }
     }
@@ -143,11 +143,11 @@ class PST extends BaseController
     {
         if ($id != null) {
             $this->pst->delete($id, true);
-            return redirect()->to('pst/trash')->with('success', 'Data Berhasil Dihapus Permanent');
+            return redirect()->to('/trash')->with('success', 'Data Berhasil Dihapus Permanent');
         } else {
             $this->pst->purgeDeleted();
             if ($this->pst->affectedRows() > 0) {
-                return redirect()->to('pst/trash')->with('success', 'Semua Data Berhasil Dihapus Permanent');
+                return redirect()->to('/trash')->with('success', 'Semua Data Berhasil Dihapus Permanent');
             } else {
                 return redirect()->to('pst')->with('info', 'Tidak ada data yang didelete');
             }

@@ -30,12 +30,12 @@
                     <?php endif; ?>
                     <div class="row" style="margin-bottom: 10px;">
                         <div class="col-md-6">
-                            <a type="button" class="btn btn-info" href="<?= base_url('pst/report/2023'); ?>"> 2023</a>
-                            <a type="button" class="btn btn-info" href="<?= base_url('pst/report/2024'); ?>"> 2024</a>
-                            <a type="button" class="btn btn-info" href="<?= base_url('pst/report/2025'); ?>"> 2025</a>
+                            <a type="button" class="btn btn-info" href="<?= base_url('/report/2023'); ?>"> 2023</a>
+                            <a type="button" class="btn btn-info" href="<?= base_url('/report/2024'); ?>"> 2024</a>
+                            <a type="button" class="btn btn-info" href="<?= base_url('/report/2025'); ?>"> 2025</a>
                         </div>
                         <div class="col-md-6" style="text-align: right;">
-                            <a type="button" class="btn btn-danger" href="<?= base_url('pst/trash'); ?>"><i class="fa fa-trash"></i> Trash</a>
+                            <a type="button" class="btn btn-danger" href="<?= base_url('/trash'); ?>"><i class="fa fa-trash"></i> Trash</a>
                         </div>
                     </div>
                     <table id="example1" class="table table-bordered table-striped">
@@ -69,8 +69,8 @@
                                     <td> <?= $value->data; ?></td>
                                     <td> <?= $value->kepuasan; ?></td>
                                     <td>
-                                        <a href="<?= base_url('pst/edit/' . $value->id); ?>" class="btn btn-info"><span class="fa fa-pencil"></span> </a>
-                                        <form action="<?= base_url('pst/delete/' . $value->id); ?>" method="post" class="d-inline" onsubmit=" return confirm('Yakin Hapus data?')">
+                                        <a href="<?= base_url('/edit' . $value->id); ?>" class="btn btn-info"><span class="fa fa-pencil"></span> </a>
+                                        <form action="<?= base_url('delete/' . $value->id); ?>" method="post" class="d-inline" onsubmit=" return confirm('Yakin Hapus data?')">
                                             <?= csrf_field(); ?>
                                             <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> </button>
                                         </form>

@@ -30,7 +30,7 @@
 
                 <?php $errors =  session()->getFlashdata('errors'); ?>
                 <div class="tile-body col-md-6">
-                    <form action="<?= base_url('/pst/update/' . $pst->id); ?>" method="post" autocomplete="off">
+                    <form action="<?= base_url('/update' . $pst->id); ?>" method="post" autocomplete="off">
                         <?= csrf_field(); ?>
                         <div class="form-group">
                             <label for="nama">Nama</label>

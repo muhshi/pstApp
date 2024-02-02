@@ -18,17 +18,17 @@
 <aside class="app-sidebar">
     <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="/asset/img/bps.png" width="40px" alt="User Image">
         <div>
-            <p class="app-sidebar__user-name">Badan Pusat Statistik</p>
+            <p class="app-sidebar__user-name">Badan Pusat Statistik </p>
             <p class="app-sidebar__user-designation">Kabupaten Demak</p>
         </div>
     </div>
     <ul class="app-menu">
-        <li><a class="app-menu__item <?= (current_url(true)->getSegment(2) == "home") ? 'active' : ''; ?>" href="/"><i class="app-menu__icon fa fa-male"></i><span class="app-menu__label">Pengunjung</span></a></li>
-        <li class="treeview <?= (current_url(true)->getSegment(2) == "report") ? 'is-expanded' : ''; ?>"><a class="app-menu__item " href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">Laporan</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+        <li><a class="app-menu__item <?= url_is("home") ? 'active' : ''; ?>" href="<?= base_url('/'); ?>"><i class="app-menu__icon fa fa-male"></i><span class="app-menu__label">Pengunjung</span></a></li>
+        <li class="treeview <?= url_is("report") ? 'is-expanded' : ''; ?>"><a class="app-menu__item " href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">Laporan</span><i class="treeview-indicator fa fa-angle-right"></i></a>
             <ul class="treeview-menu">
-                <li><a class="treeview-item <?= (current_url(true)->getSegment(2) == "report") ? 'active' : ''; ?>" href="/pst/report"><i class="icon fa fa-circle-o"></i> Report</a></li>
+                <li><a class="treeview-item <?= url_is("report") ? 'active' : ''; ?>" href="<?= base_url('/report'); ?>"><i class="icon fa fa-circle-o"></i> Report</a></li>
             </ul>
         </li>
-        <li><a class="app-menu__item <?= (current_url(true)->getSegment(2) == "dashboard") ? 'active' : ''; ?>" href="/pst/dashboard/<?= date('Y'); ?>/1"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Charts</span></a></li>
+        <li><a class="app-menu__item <?= url_is("dashboard") ? 'active' : ''; ?>" href="<?= base_url("/dashboard"); ?>/<?= date('Y'); ?>/1"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Charts</span></a></li>
     </ul>
 </aside>

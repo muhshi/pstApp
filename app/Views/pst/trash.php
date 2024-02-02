@@ -30,14 +30,18 @@
                         </div>
                     <?php endif; ?>
                     <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-md-6">
+                            <a type="button" class="btn btn-info" href="<?= base_url('/report'); ?>"><i class="fa fa-arrow-left"></i> back</a>
 
-                        <div class="col-md-12   " style="text-align: right;">
-                            <a type="button" class="btn btn-success" href="<?= base_url('pst/restore'); ?>"><i class="fa fa-recycle"></i> Restore All</a>
-                            <form action="<?= site_url("pst/delete2"); ?>" onsubmit="return confirm('Yakin mau di delete permanent?')" method="post" class="d-inline">
+                        </div>
+                        <div class="col-md-6" style="text-align: right;">
+                            <a type="button" class="btn btn-success" href="<?= base_url('/restore'); ?>"><i class="fa fa-recycle"></i> Restore All</a>
+                            <form action="<?= site_url("/delete2"); ?>" onsubmit="return confirm('Yakin mau di delete permanent?')" method="post" class="d-inline">
                                 <?= csrf_field(); ?>
                                 <button class="btn btn-danger"><i class="fa fa-trash"></i>Delete All</button>
                             </form>
                         </div>
+
                     </div>
                     <table id="example1" class="table table-bordered table-striped">
                         <thead>
@@ -70,8 +74,8 @@
                                     <td> <?= $value->data; ?></td>
                                     <td> <?= $value->kepuasan; ?></td>
                                     <td>
-                                        <a href="<?= base_url('pst//restore/' . $value->id); ?>" class="btn btn-success"><span class="fa fa-recycle"></span> </a>
-                                        <form action="<?= base_url("pst/delete2/" . $value->id); ?>" method="post" class="d-inline" onsubmit=" return confirm('Yakin Hapus data secara permanen?')">
+                                        <a href="<?= base_url('restore/' . $value->id); ?>" class="btn btn-success"><span class="fa fa-recycle"></span> </a>
+                                        <form action="<?= base_url("delete2/" . $value->id); ?>" method="post" class="d-inline" onsubmit=" return confirm('Yakin Hapus data secara permanen?')">
                                             <?= csrf_field(); ?>
                                             <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> </button>
                                         </form>

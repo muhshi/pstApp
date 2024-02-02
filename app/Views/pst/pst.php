@@ -30,7 +30,7 @@
 
                 <?php $errors =  session()->getFlashdata('errors'); ?>
                 <div class="tile-body col-md-6">
-                    <form action="<?= base_url('/pst/create'); ?>" method="post" autocomplete="off">
+                    <form action="<?= base_url('/create'); ?>" method="post" autocomplete="off">
                         <?= csrf_field(); ?>
                         <div class="form-group">
                             <label for="nama">Nama</label>
@@ -53,7 +53,7 @@
                             <?php foreach ($jenis_kelamin as $value) : ?>
                                 <div class="form-check">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input <?= isset($errors['jenis_kelamin']) ? 'is-invalid' : null; ?>" type="radio" name="jenis_kelamin" id="Radio<?= $value->id; ?>" value="<?= $value->id; ?>"  <?= old('jenis_kelamin' == $value->id) ? 'checked' : null; ?>>
+                                        <input class="form-check-input <?= isset($errors['jenis_kelamin']) ? 'is-invalid' : null; ?>" type="radio" name="jenis_kelamin" id="Radio<?= $value->id; ?>" value="<?= $value->id; ?>" <?= old('jenis_kelamin' == $value->id) ? 'checked' : null; ?>>
                                         <label class="form-check-label" for="Radio<?= $value->id; ?>"><?= $value->jenis_kelamin; ?></label>
                                     </div>
                                 </div>
@@ -97,7 +97,7 @@
                         <select class="form-control <?= isset($errors['pendidikan']) ? 'is-invalid' : null; ?>" name="pendidikan" id="pendidikan">
                             <option value="" hidden></option>
                             <?php foreach ($pendidikan as $value) : ?>
-                                <option value="<?= $value->id; ?>" <?= old('pendidikan' == $value->id) ? 'selected' : null; ?> >
+                                <option value="<?= $value->id; ?>" <?= old('pendidikan' == $value->id) ? 'selected' : null; ?>>
                                     <?= $value->pendidikan; ?>
                                 </option>
                             <?php endforeach; ?>
