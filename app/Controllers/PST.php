@@ -51,7 +51,7 @@ class PST extends BaseController
         if (!$save) {
             return redirect()->back()->withInput()->with('errors', $this->pst->errors());
         } else {
-            return redirect()->to('pst/pst')->with('success', 'Data Berhasil Disimpan');
+            return redirect()->to('/')->with('success', 'Data Berhasil Disimpan');
         }
     }
 

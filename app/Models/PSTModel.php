@@ -31,7 +31,6 @@ class PSTModel extends Model
         'tanggal'        => 'required',
         'nama'           => 'required',
         'jenis_kelamin'  => 'required',
-        'email'          => 'required',
         'tahun_lahir'    => 'required',
         'umur'           => 'required',
         'alamat'         => 'required',
@@ -41,7 +40,6 @@ class PSTModel extends Model
         'pemanfaatan_data' => 'required',
         'layanan'        => 'required',
         'data'           => 'required',
-        'saran'          => 'required',
         'kepuasan'       => 'required',
     ];
     protected $validationMessages   = [];
